@@ -42,17 +42,13 @@ public class Doc_InfoActivity extends AppCompatActivity {
     FirebaseUser Current_User;
     int tok;
     int TOKEN;
-     int Status_token;
-     String User_Doctor;
+    int Status_token;
+    String User_Doctor;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.doc_info);
-
-
-
-
 
         doc_info = findViewById(R.id.doc_info);
         Image = findViewById(R.id.image);
@@ -93,48 +89,6 @@ public class Doc_InfoActivity extends AppCompatActivity {
             }
         });
 
-//        tDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_User.getUid());
-//        tDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                User_Doctor = dataSnapshot.getValue(User.class).getMy_doctor();
-//                Log.e("asd","asd"+User_Doctor);
-
-//                TOKEN = dataSnapshot.getValue(User.class).getMy_token();
-//                Log.e("123","asdfg"+TOKEN);
-//                int random =0;
-//                if(TOKEN < Status_token){
-//                    tDatabase.child("my_token").setValue(random);
-//                }
-
-//            }
-
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
-
-//        pDatabase = FirebaseDatabase.getInstance().getReference().child("Doctors_Status");
-//        pDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
-//                    if(User_Doctor.equals(dataSnapshot1.getValue(Token.class).getDoctor_name())){
-//                        Status_token= (dataSnapshot1.getValue(Token.class).getToken_No());
-//                        Log.e("145","asdfg"+Status_token);
-//
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
         tDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_User.getUid());
         tDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -143,14 +97,6 @@ public class Doc_InfoActivity extends AppCompatActivity {
 
                 TOKEN = dataSnapshot.getValue(User.class).getMy_token();
                 Log.e("123","asdfg"+TOKEN);
-//                int random = 0;
-//                if(9<12){
-//                    Log.e("149","asdfg"+"false");
-//                    tDatabase.child("my_token").setValue(random);
-//                }
-//                else {
-//                    Log.e("789","asdfg"+"true");
-//                }
 
             }
 
@@ -160,85 +106,82 @@ public class Doc_InfoActivity extends AppCompatActivity {
             }
         });
 
-            button = findViewById(R.id.bookbtn);
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dialog.setMessage("Booking Appointment, Please wait.");
-                    dialog.show();
-                    if(TOKEN == 0) {
+        button = findViewById(R.id.bookbtn);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.setMessage("Booking Appointment, Please wait.");
+                dialog.show();
+                if(TOKEN == 0) {
 
-                        {
-                            mDatabase = FirebaseDatabase.getInstance().getReference().child("Doctors_List");
-                            mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    Log.i("Function", "Called");
-                                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                                        if (Doctorname.equals(dataSnapshot1.getValue(Doctor.class).getDoc_name())) {
-                                            Log.e("doc_name", "ahkfjhkj" + dataSnapshot1.getValue(Doctor.class).getDoc_name());
-                                            Log.e("doc_token", "ahkfjhkj" + dataSnapshot1.getValue(Doctor.class).getDoc_token());
-                                            String current_name = dataSnapshot1.getValue(Doctor.class).getDoc_name();
-                                            tok = dataSnapshot1.getValue(Doctor.class).getDoc_token() + 1;
-                                            String key = dataSnapshot1.getKey();
+                    {
+                        mDatabase = FirebaseDatabase.getInstance().getReference().child("Doctors_List");
+                        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Log.i("Function", "Called");
+                                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                    if (Doctorname.equals(dataSnapshot1.getValue(Doctor.class).getDoc_name())) {
+                                        Log.e("doc_name", "ahkfjhkj" + dataSnapshot1.getValue(Doctor.class).getDoc_name());
+                                        Log.e("doc_token", "ahkfjhkj" + dataSnapshot1.getValue(Doctor.class).getDoc_token());
+                                        String current_name = dataSnapshot1.getValue(Doctor.class).getDoc_name();
+                                        tok = dataSnapshot1.getValue(Doctor.class).getDoc_token() + 1;
+                                        String key = dataSnapshot1.getKey();
 
-                                            mDatabase.child(key).child("doc_token").setValue(tok);
+                                        mDatabase.child(key).child("doc_token").setValue(tok);
 
 
-                                        }
-                                    } //loop ends
-
+                                    }
                                 }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                            }
 
-                                }
-                            });
-                        }
-                        {
-                            fDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_User.getUid());
-                            fDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    Log.e("name", "name" + dataSnapshot.getValue(User.class).getName());
-                                    Log.e("current", "current" + current_name);
-                                    String data = dataSnapshot.getKey();
-                                    fDatabase.child("my_doctor").setValue(Doctorname);
-                                    fDatabase.child("my_token").setValue(tok).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                startActivity(new Intent(getApplicationContext(), tokenStatusFragment.class));
-                                                dialog.dismiss();
-                                            }
-                                        }
-                                    });
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                }
-                            });
-                        }
+                            }
+                        });
                     }
-                    else {
-                        Toast.makeText(Doc_InfoActivity.this, "You can't Book twice", Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
+                    {
+                        fDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Current_User.getUid());
+                        fDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Log.e("name", "name" + dataSnapshot.getValue(User.class).getName());
+                                Log.e("current", "current" + current_name);
+                                String data = dataSnapshot.getKey();
+                                fDatabase.child("my_doctor").setValue(Doctorname);
+                                fDatabase.child("my_token").setValue(tok).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            startActivity(new Intent(getApplicationContext(), tokenStatusFragment.class));
+                                            dialog.dismiss();
+                                        }
+                                    }
+                                });
+
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
                     }
-
-
-
+                }
+                else {
+                    Toast.makeText(Doc_InfoActivity.this, "You can't Book twice", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
                 }
 
-            });
 
-//        else{
-//            Toast.makeText(this, "You can't Book twice!!", Toast.LENGTH_SHORT).show();
-//        }
+
+            }
+
+        });
+
+
     }
 }
-

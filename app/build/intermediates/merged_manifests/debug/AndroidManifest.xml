@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="16"
-        android:targetSdkVersion="28" />
+        android:targetSdkVersion="29" />
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -27,6 +27,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.lifeline.ListOfDoctorsActivity"
@@ -143,5 +144,4 @@
             android:value="@integer/google_play_services_version" />
     </application>
 
-</manifest> <!-- <activity android:name=".RegisterActivity" /> -->
-<!-- <activity android:name=".LoginActivity"> -->
+</manifest>

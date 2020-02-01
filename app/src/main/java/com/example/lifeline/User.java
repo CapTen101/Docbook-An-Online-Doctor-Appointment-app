@@ -1,15 +1,14 @@
 package com.example.lifeline;
 
 public class User {
-    public String name,branch, email, my_doctor;
-    private String  enrollment;
-    public int my_token ;
+    public String name, branch, email, my_doctor;
+    private String enrollment;
+    public int my_token;
 
-    public User(){
-
+    public User() {
     }
 
-    public User(String name,String branch, String email,String enrollment,String my_doctor, int my_token) {
+    public User(String name, String branch, String email, String enrollment, String my_doctor, int my_token) {
         this.name = name;
         this.email = email;
         this.enrollment = enrollment;

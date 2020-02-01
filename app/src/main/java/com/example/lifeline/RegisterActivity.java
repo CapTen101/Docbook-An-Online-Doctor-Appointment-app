@@ -30,8 +30,6 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView mLoginBtn;
     private FirebaseAuth fAuth;
     private ProgressBar progressBar;
-
-
     private DatabaseReference mDatabase;
 
     @Override
@@ -100,7 +98,6 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-//                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                     }
                                 }
                             });

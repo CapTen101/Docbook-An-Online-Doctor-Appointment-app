@@ -39,17 +39,15 @@ public class tokenStatusFragment extends AppCompatActivity {
 
 
     private TextView doctor, token;
-//    private String ID;
-
     private DatabaseReference mDatabase;
     private RecyclerView recyclerView;
     private ArrayList<Token> list;
     private Token_Adapter adapter;
     FirebaseAuth fAuth;
     FirebaseUser current_user;
-    private DatabaseReference fDatabase , pDatabase ,dDatabase;
+    private DatabaseReference fDatabase, pDatabase, dDatabase;
     ProgressBar progressBar;
-    int tok , Status_token;
+    int tok, Status_token;
     String doc;
 
 
@@ -92,45 +90,6 @@ public class tokenStatusFragment extends AppCompatActivity {
 
             }
         });
-
-//        pDatabase = FirebaseDatabase.getInstance().getReference().child("Doctors_Status");
-//        pDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
-//                    if(doc.equals(dataSnapshot1.getValue(Token.class).getDoctor_name().toString())){
-//                        Status_token = (dataSnapshot1.getValue(Token.class).getToken_No());
-//                        Log.e("","123456"+Status_token);
-//
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
-
-//            Log.e("",""+"if is done");
-////            dDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(current_user.getUid());
-////            dDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-////                @Override
-////                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-////                    if (Status_token > tok) {
-////                        dDatabase.child("my_doctor").setValue("Doctor...");
-////                        dDatabase.child("my_token").setValue(0);
-////                    }
-////                }
-////                @Override
-////                public void onCancelled(@NonNull DatabaseError databaseError) {
-////
-////                }
-////            });
-
-
-
 
         recyclerView = findViewById(R.id.token_recycler);
         recyclerView.setHasFixedSize(true);
