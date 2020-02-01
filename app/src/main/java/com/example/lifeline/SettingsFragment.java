@@ -35,7 +35,6 @@ public class SettingsFragment extends AppCompatActivity {
     DatabaseReference mDatabase;
     ProgressBar progressBar;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +49,6 @@ public class SettingsFragment extends AppCompatActivity {
         current_user = fAuth.getCurrentUser();
         final String CURRENT = current_user.getEmail();
         Log.e("currenty", "currenty" + CURRENT);
-
 
         Toolbar toolbar = findViewById(R.id.toolbar4);
         setSupportActionBar(toolbar);

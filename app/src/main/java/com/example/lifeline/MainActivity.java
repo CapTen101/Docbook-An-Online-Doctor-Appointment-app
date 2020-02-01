@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        preferenceConfig = new SharedPreferenceConfig(getApplicationContext());
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
@@ -71,10 +69,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() == null) {
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-//                Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-//                loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(loginIntent);
-
                 }
             }
         };
@@ -84,24 +78,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         updateNavHeader();
 
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);drawer.addDrawerListener(toggle);toggle.syncState();
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
-
         }
     }
 
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
 
         int id = item.getItemId();
 
@@ -126,14 +113,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.nav_logout) {
             fAuth.signOut();
-//            preferenceConfig.writeLoginStatus(false);
-//            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             finish();
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-//        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -157,10 +141,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = findViewById(R.id.nev_view);
         View headerView = navigationView.getHeaderView(0);
-//        name =  headerView.findViewById(R.id.profile_name);
         if (CurrentUser != null) {
             email = headerView.findViewById(R.id.profile_email);
-//        name.setText(CurrentUser.getDisplayName());
             email.setText(CurrentUser.getEmail());
         }
 

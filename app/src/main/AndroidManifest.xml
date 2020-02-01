@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.lifeline">
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,34 +15,37 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ListOfDoctorsActivity"
+        <activity android:name=".IllnessListActivity"></activity>
+        <activity
+            android:name=".ListOfDoctorsActivity"
             android:label="List of Doctors"
-            android:parentActivityName=".ListOfDoctorsActivity"/>
-                <activity android:name=".RegisterActivity" />
-                <activity android:name=".LoginActivity">
+            android:parentActivityName=".ListOfDoctorsActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".tokenStatusFragment"
+        <activity
+            android:name=".tokenStatusFragment"
             android:label="Token Status"
-            android:parentActivityName=".MainActivity"
-            />
-        <activity android:name=".SettingsFragment"
-            android:parentActivityName=".MainActivity"
-            android:label="My Profile"/>
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SettingsFragment"
+            android:label="My Profile"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Doc_InfoActivity"
-            android:parentActivityName=".ListOfDoctorsActivity"/>
+        <activity
+            android:name=".Doc_InfoActivity"
+            android:parentActivityName=".ListOfDoctorsActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>

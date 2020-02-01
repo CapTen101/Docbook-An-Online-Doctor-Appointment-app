@@ -96,7 +96,7 @@ public class Doc_InfoActivity extends AppCompatActivity {
                 User_Doctor = dataSnapshot.getValue(User.class).getMy_doctor();
 
                 TOKEN = dataSnapshot.getValue(User.class).getMy_token();
-                Log.e("123","asdfg"+TOKEN);
+                Log.e("123", "asdfg" + TOKEN);
 
             }
 
@@ -112,7 +112,7 @@ public class Doc_InfoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 dialog.setMessage("Booking Appointment, Please wait.");
                 dialog.show();
-                if(TOKEN == 0) {
+                if (TOKEN == 0) {
 
                     {
                         mDatabase = FirebaseDatabase.getInstance().getReference().child("Doctors_List");
@@ -129,8 +129,6 @@ public class Doc_InfoActivity extends AppCompatActivity {
                                         String key = dataSnapshot1.getKey();
 
                                         mDatabase.child(key).child("doc_token").setValue(tok);
-
-
                                     }
                                 }
 
@@ -160,8 +158,6 @@ public class Doc_InfoActivity extends AppCompatActivity {
                                         }
                                     }
                                 });
-
-
                             }
 
                             @Override
@@ -170,18 +166,12 @@ public class Doc_InfoActivity extends AppCompatActivity {
                             }
                         });
                     }
-                }
-                else {
+                } else {
                     Toast.makeText(Doc_InfoActivity.this, "You can't Book twice", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                 }
-
-
-
             }
 
         });
-
-
     }
 }
