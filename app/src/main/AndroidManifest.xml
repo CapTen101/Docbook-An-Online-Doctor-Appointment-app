@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".IllnessListActivity"></activity>
+        <activity android:name=".DoctorListActivity"></activity>
+        <activity android:name=".IllnessListActivity" />
         <activity
             android:name=".ListOfDoctorsActivity"
             android:label="List of Doctors"

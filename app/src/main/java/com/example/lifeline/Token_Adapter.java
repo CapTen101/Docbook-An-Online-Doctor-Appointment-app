@@ -33,15 +33,12 @@ public class Token_Adapter extends RecyclerView.Adapter<Token_Adapter.MyViewHold
 
         holder.Doctor_name.setText(String.valueOf(Doctors_Status.get(position).getDoctor_name()));
         holder.token_no.setText(String.valueOf(Doctors_Status.get(position).getToken_No()));
-
-
     }
 
     @Override
     public int getItemCount() {
         return Doctors_Status.size();
     }
-
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView Doctor_name, token_no;
