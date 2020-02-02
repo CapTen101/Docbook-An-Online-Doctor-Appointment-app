@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class IllnessListAdapter extends RecyclerView.Adapter<IllnessListAdapter.myViewHolder> {
 
     private ArrayList<String> millnessName;
+    private ArrayList<String> mDepartmentName;
     private Context mContext;
 
     public IllnessListAdapter(Context context, ArrayList<String> illnessName) {
@@ -35,13 +36,16 @@ public class IllnessListAdapter extends RecyclerView.Adapter<IllnessListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull IllnessListAdapter.myViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull IllnessListAdapter.myViewHolder holder, final int position) {
         Log.e("hey!", "OnBindViewHolder is called, instanciated");
         holder.thisillnessName.setText(millnessName.get(position));
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToDoctorListPage = new Intent(mContext, DoctorListActivity.class);
+                Log.e("working","fine");
+                Intent goToDoctorListPage = new Intent(mContext, ListOfDoctorsActivity.class);
+                goToDoctorListPage.putExtra("Department",millnessName.get(position));
+                mContext.startActivity(goToDoctorListPage);
             }
         });
     }

@@ -5,28 +5,34 @@
     android:layout_height="match_parent"
     tools:context=".IllnessListActivity">
 
-    <AutoCompleteTextView
-        android:id="@+id/illness_auto_complete_textview"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:completionThreshold="1" />
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/testview"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="200dp" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/testview1"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_below="@id/testview"/>-->
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/search_icon"
+            android:layout_weight="2"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="4dp"/>
+        <AutoCompleteTextView
+            android:id="@+id/illness_auto_complete_textview"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:completionThreshold="1"
+            android:layout_weight="8"/>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/illness_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="3dp"/>
 
 </RelativeLayout>
