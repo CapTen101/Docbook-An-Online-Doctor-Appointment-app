@@ -8,6 +8,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -26,7 +28,8 @@ import java.util.ArrayList;
 
 public class IllnessListActivity extends AppCompatActivity {
 
-    private TextView test, test1;
+//    private TextView test, test1;
+    private AutoCompleteTextView illnessAutoCompleteTextView;
     private static final String ILLNESS_LIST_URL = "https://api.myjson.com/bins/11qn2q";
 //    private static final String DOCTOR_LIST_URL = "https://api.myjson.com/bins/1ahxdu";
     ArrayList<String> illnessList = new ArrayList<>();
@@ -39,12 +42,13 @@ public class IllnessListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_illness_list);
+        illnessAutoCompleteTextView = findViewById(R.id.illness_auto_complete_textview);
 
         IllnessRequest illness_request = new IllnessRequest();
         illness_request.execute();
 
-//        DoctorRequest doctor_request = new DoctorRequest();
-//        doctor_request.execute();
+        ArrayAdapter<String> adapterIllness = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, illnessList);
+        illnessAutoCompleteTextView.setAdapter(adapterIllness);
     }
 
     public class IllnessRequest extends AsyncTask<URL, String, String> {

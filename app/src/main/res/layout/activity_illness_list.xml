@@ -9,23 +9,24 @@
         android:id="@+id/illness_auto_complete_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:completionThreshold="1" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/testview"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="200dp" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/testview"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="200dp" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/testview1"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_below="@id/testview"/>-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/testview1"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_below="@id/testview"/>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/illness_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="100dp" />
 
 </RelativeLayout>
