@@ -54,7 +54,7 @@ public class Doc_Adapter extends RecyclerView.Adapter<Doc_Adapter.MyViewHolder> 
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 DoctorName = Doctors_List.get(position).getDoc_name();
-                Log.e("DOCTORNAME", "YOYOYOYOYO" + DoctorName);
+                Log.e("DOCTORNAME", "YOYOYOYO" + DoctorName);
 
                 intent.putExtra("image", Doctors_List.get(position).getDoc_profile());
                 intent.putExtra("name", Doctors_List.get(position).getDoc_name());

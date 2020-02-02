@@ -32,10 +32,11 @@ public class IllnessListActivity extends AppCompatActivity {
 
 
     private AutoCompleteTextView illnessAutoCompleteTextView;
-    private static final String ILLNESS_LIST_URL = "https://api.myjson.com/bins/11qn2q";
-
+//    private static final String ILLNESS_LIST_URL = "https://api.myjson.com/bins/11qn2q";
+private static final String ILLNESS_LIST_URL = "https://api.myjson.com/bins/ae15y";
     ArrayList<String> illnessList = new ArrayList<>();
     ArrayList<String> departmentList = new ArrayList<>();
+    String sicknessfetch, department;
 
 
     @Override
@@ -50,9 +51,48 @@ public class IllnessListActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterIllness = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, illnessList);
         illnessAutoCompleteTextView.setAdapter(adapterIllness);
         illnessAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                sicknessfetch = illnessAutoCompleteTextView.getText().toString();
+                if(sicknessfetch.equals("Allergy") || sicknessfetch.equals("Asthma")){
+                    department = "Allergist";
+                } else if (sicknessfetch.equals("Heartburn") || sicknessfetch.equals("Artery Blockage")||sicknessfetch.equals("Heart Attack")||sicknessfetch.equals("high blood pressure")){
+                    department = "Cardiologist";
+                }
+                else if(sicknessfetch.equals("Acne")||sicknessfetch.equals("Skin problem")){
+                    department="Dermatologist";
+                }
+                else if (sicknessfetch.equals("Tuberculosis") || sicknessfetch.equals("Ear-Pain")||sicknessfetch.equals("Swine Flu")){
+                    department = "ENT";
+                }
+                else if (sicknessfetch.equals("Appendicitis") || sicknessfetch.equals("Jaundice")||sicknessfetch.equals("Ulcers")){
+                    department = "Gastroenterologist";
+                }
+                else if (sicknessfetch.equals("Hepatitis-B")){
+                    department = "Hepatologist";
+                }
+                else if (sicknessfetch.equals("Kidney Stone")){
+                    department = "Nephrologist";
+                }
+                else if (sicknessfetch.equals("Diabetes") || sicknessfetch.equals("Migrane")||sicknessfetch.equals("Headache")||sicknessfetch.equals("")){
+                    department = "Neurologist";
+                }
+                else if (sicknessfetch.equals("Teeth Pain") || sicknessfetch.equals("Wisdom Tooth")){
+                    department = "Orthodontist";
+                }
+                else if (sicknessfetch.equals("Chikungunya") || sicknessfetch.equals("Fracture") || sicknessfetch.equals("Ligament")){
+                    department = "Orthopedist";
+                }
+                else if (sicknessfetch.equals("Cancer")){
+                    department = "Oncologist";
+                }
+                else if (sicknessfetch.equals("Cholera") || sicknessfetch.equals("Fever") || sicknessfetch.equals("Dengue") || sicknessfetch.equals("Cold") || sicknessfetch.equals("Cough") || sicknessfetch.equals("Malaria") || sicknessfetch.equals("Obesity") || sicknessfetch.equals("Rabies") || sicknessfetch.equals("Body Weakness") ){
+                    department = "Physician";
+                }
+
                 Intent goToDoctorListPage = new Intent(IllnessListActivity.this, ListOfDoctorsActivity.class);
+                goToDoctorListPage.putExtra("department",department);
                 startActivity(goToDoctorListPage);
             }
         });

@@ -48,6 +48,8 @@ public class ListOfDoctorsActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 
+//        Intent receiveDepartment =
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<Doctor>();
 
